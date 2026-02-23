@@ -5,14 +5,16 @@ class Card {
     tcgId: string;
     name: string;
     type: string;
-    artType: ArtTypes;
+    artTypeId: number;
+    artType?: string;
     imageUrl: string;
 
-    constructor(id: string, tcgId: string, name: string, type: string, artType: ArtTypes, imageUrl: string) {
+    constructor(id: string, tcgId: string, name: string, type: string, artTypeId: number, imageUrl: string, artType?: string) {
         this.code = id;
         this.tcgId = tcgId;
         this.name = name;
         this.type = type;
+        this.artTypeId = artTypeId;
         this.artType = artType;
         this.imageUrl = imageUrl;
     }

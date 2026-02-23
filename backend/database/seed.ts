@@ -44,6 +44,8 @@ function getDisplayType(card: ApiCard): string {
 }
 
 async function seed() {
+  db.run("DELETE FROM cards");
+
   const firstPage = await fetchPage(1);
   const totalPages = firstPage.pages;
 
@@ -60,9 +62,13 @@ async function seed() {
   );
 
   const insert = db.prepare(`
-    INSERT OR IGNORE INTO cards (code, tcgId, name, type, artType, imageUrl)
+    INSERT OR IGNORE INTO cards (code, tcgId, name, type, artTypeId, imageUrl)
     VALUES (?, ?, ?, ?, ?, ?)
   `);
+
+  const getArtTypeId = db.prepare<{ id: number }, string>("SELECT id FROM arts WHERE name = ?");
+  const normalArtTypeId = getArtTypeId.get("Normal")?.id ?? 1;
+  const alternateArtTypeId = getArtTypeId.get("Alternate")?.id ?? 2;
 
   const insertMany = db.transaction((cards: ApiCard[]) => {
     for (const card of cards) {
@@ -71,7 +77,7 @@ async function seed() {
         card.riftbound_id ?? "",
         getDisplayName(card),
         getDisplayType(card),
-        card.metadata.alternate_art ? "Alternate" : "Normal",
+        card.metadata.alternate_art ? alternateArtTypeId : normalArtTypeId,
         card.media?.image_url ?? ""
       );
     }
