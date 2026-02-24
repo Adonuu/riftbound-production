@@ -96,10 +96,11 @@ export const getOverlayComponents = (overlayId: number): Component[] => {
 
 export const createComponent = (component: Component): Component => {
     const result = db.prepare(`
-        INSERT INTO components (overlayId, type, content, x, y, width, height, zIndex)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO components (overlayId, name, type, content, x, y, width, height, zIndex)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).run(
         component.overlayId,
+        component.name,
         component.type,
         component.content,
         component.x,
@@ -121,6 +122,7 @@ export const updateComponent = (id: number, component: Partial<Component>): Comp
     db.prepare(`
         UPDATE components SET
             overlayId = ?,
+            name = ?,
             type = ?,
             content = ?,
             x = ?,
@@ -131,6 +133,7 @@ export const updateComponent = (id: number, component: Partial<Component>): Comp
         WHERE id = ?
     `).run(
         updated.overlayId,
+        updated.name,
         updated.type,
         updated.content,
         updated.x,

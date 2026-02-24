@@ -132,8 +132,14 @@ export const overlayRoutes: Record<string, Partial<Record<string, (req: Request)
             const overlayIdStr = pathParts[pathParts.length - 2];
             const overlayId = parseInt(overlayIdStr ?? "0");
             const body = await parseJsonBody(req);
+            
+            const countResult = db.query("SELECT COUNT(*) as count FROM components WHERE overlayId = ?").get(overlayId) as { count: number };
+            const componentNumber = countResult.count + 1;
+            const defaultName = `Component ${componentNumber}`;
+            
             const component = new Component(
                 overlayId,
+                body.name as string || defaultName,
                 body.type as "image" | "text" | "video" || "text",
                 body.content as string || "",
                 body.x as number || 0,

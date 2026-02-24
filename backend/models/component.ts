@@ -1,6 +1,7 @@
 class Component {
     id?: number;
     overlayId: number;
+    name: string;
     type: "image" | "text" | "video";
     content: string;
     x: number;
@@ -11,6 +12,7 @@ class Component {
 
     constructor(
         overlayId: number,
+        name: string,
         type: "image" | "text" | "video",
         content: string,
         x: number = 0,
@@ -21,6 +23,7 @@ class Component {
         id?: number
     ) {
         this.overlayId = overlayId;
+        this.name = name;
         this.type = type;
         this.content = content;
         this.x = x;

@@ -5,6 +5,7 @@ const API_BASE = 'http://localhost:3000';
 export interface Component {
     id?: number;
     overlayId: number;
+    name: string;
     type: 'image' | 'text' | 'video';
     content: string;
     x: number;

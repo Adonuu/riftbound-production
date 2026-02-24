@@ -51,6 +51,7 @@ db.run(`
   CREATE TABLE IF NOT EXISTS components (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     overlayId INTEGER NOT NULL,
+    name TEXT NOT NULL,
     type TEXT NOT NULL,
     content TEXT NOT NULL,
     x REAL NOT NULL DEFAULT 0,

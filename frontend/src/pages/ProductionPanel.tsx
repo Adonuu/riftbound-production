@@ -90,7 +90,7 @@ export default function ProductionPanel() {
                         <div className="overlay-components">
                             {overlayComponents[overlay.id!]?.filter(c => c.type === 'text').map((comp) => (
                                 <div key={comp.id} className="text-component-edit">
-                                    <span className="text-label">Text: </span>
+                                    <span className="text-label">{comp.name}: </span>
                                     {editingText?.componentId === comp.id ? (
                                         <input
                                             type="text"

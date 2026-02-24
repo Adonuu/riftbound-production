@@ -261,10 +261,20 @@
 }
 
 .component-item span {
-  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.component-name {
+  font-weight: 500;
+  min-width: 120px;
+  color: #646cff;
+}
+
+.component-type {
+  flex: 1;
+  color: #888;
 }
 
 .delete-btn {

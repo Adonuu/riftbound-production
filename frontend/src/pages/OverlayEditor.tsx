@@ -94,7 +94,9 @@ export default function OverlayEditor() {
                 const data = await res.json();
                 
                 if (data.path) {
+                    const componentName = `${type === 'image' ? 'Image' : 'Video'} ${components.length + 1}`;
                     await addComponent(overlay.id, {
+                        name: componentName,
                         type,
                         content: `${API_BASE}${data.path}`,
                         x: 0,
@@ -120,7 +122,9 @@ export default function OverlayEditor() {
 
     const handleAddText = async () => {
         if (!overlay?.id) return;
+        const componentName = `Text ${components.length + 1}`;
         await addComponent(overlay.id, {
+            name: componentName,
             type: 'text',
             content: 'New Text',
             x: 0,
@@ -143,6 +147,7 @@ export default function OverlayEditor() {
         const formData = new FormData(form);
         
         await addComponent(overlay.id, {
+            name: formData.get('name') as string || `Component ${components.length + 1}`,
             type: formData.get('type') as 'image' | 'text' | 'video',
             content: formData.get('content') as string,
             x: parseFloat(formData.get('x') as string) || 0,
@@ -165,6 +170,7 @@ export default function OverlayEditor() {
         const formData = new FormData(form);
         
         await updateComponent(editingComponent.id, {
+            name: formData.get('name') as string || editingComponent.name,
             type: formData.get('type') as 'image' | 'text' | 'video',
             content: formData.get('content') as string,
             x: parseFloat(formData.get('x') as string) || 0,
@@ -245,7 +251,8 @@ export default function OverlayEditor() {
                 <div className="component-list">
                     {components.map((comp) => (
                         <div key={comp.id} className="component-item">
-                            <span>{comp.type}: {comp.content.substring(0, 30)}...</span>
+                            <span className="component-name">{comp.name}</span>
+                            <span className="component-type">{comp.type}: {comp.content.substring(0, 20)}...</span>
                             <button onClick={() => setEditingComponent(comp)}>Edit</button>
                             <button onClick={() => handleDeleteComponent(comp.id!)} className="delete-btn">X</button>
                         </div>
@@ -333,6 +340,10 @@ export default function OverlayEditor() {
                 <div className="component-edit-form">
                     <h4>Edit Component</h4>
                     <form onSubmit={handleUpdateComponent}>
+                        <label>
+                            Name:
+                            <input type="text" name="name" defaultValue={editingComponent.name} required />
+                        </label>
                         <label>
                             Type:
                             <select name="type" defaultValue={editingComponent.type}>
