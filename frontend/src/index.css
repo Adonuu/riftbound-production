@@ -79,3 +79,247 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.overlay-renderer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.overlay-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-container.entering {
+  animation-fill-mode: forwards;
+}
+
+.overlay-container.exiting {
+  animation-fill-mode: forwards;
+}
+
+.overlay-fade.entering {
+  animation-name: fadeIn;
+}
+
+.overlay-fade.exiting {
+  animation-name: fadeOut;
+}
+
+.overlay-slide.entering {
+  animation-name: slideIn;
+}
+
+.overlay-slide.exiting {
+  animation-name: slideOut;
+}
+
+.overlay-slide.direction-left-to-right.entering {
+  animation-name: slideInFromLeft;
+}
+
+.overlay-slide.direction-left-to-right.exiting {
+  animation-name: slideOutToRight;
+}
+
+.overlay-slide.direction-right-to-left.entering {
+  animation-name: slideInFromRight;
+}
+
+.overlay-slide.direction-right-to-left.exiting {
+  animation-name: slideOutToLeft;
+}
+
+.overlay-slide.direction-top-to-bottom.entering {
+  animation-name: slideInFromTop;
+}
+
+.overlay-slide.direction-top-to-bottom.exiting {
+  animation-name: slideOutToBottom;
+}
+
+.overlay-slide.direction-bottom-to-top.entering {
+  animation-name: slideInFromBottom;
+}
+
+.overlay-slide.direction-bottom-to-top.exiting {
+  animation-name: slideOutToTop;
+}
+
+.overlay-zoom.entering {
+  animation-name: zoomIn;
+}
+
+.overlay-zoom.exiting {
+  animation-name: zoomOut;
+}
+
+.overlay-slide-fade.entering {
+  animation-name: slideFadeIn;
+}
+
+.overlay-slide-fade.exiting {
+  animation-name: slideFadeOut;
+}
+
+.overlay-slide-fade.direction-left-to-right.entering {
+  animation-name: slideFadeInFromLeft;
+}
+
+.overlay-slide-fade.direction-left-to-right.exiting {
+  animation-name: slideFadeOutToRight;
+}
+
+.overlay-slide-fade.direction-right-to-left.entering {
+  animation-name: slideFadeInFromRight;
+}
+
+.overlay-slide-fade.direction-right-to-left.exiting {
+  animation-name: slideFadeOutToLeft;
+}
+
+.overlay-slide-fade.direction-top-to-bottom.entering {
+  animation-name: slideFadeInFromTop;
+}
+
+.overlay-slide-fade.direction-top-to-bottom.exiting {
+  animation-name: slideFadeOutToBottom;
+}
+
+.overlay-slide-fade.direction-bottom-to-top.entering {
+  animation-name: slideFadeInFromBottom;
+}
+
+.overlay-slide-fade.direction-bottom-to-top.exiting {
+  animation-name: slideFadeOutToTop;
+}
+
+.overlay-none.entering,
+.overlay-none.exiting {
+  animation: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOutToLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes slideInFromTop {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideOutToBottom {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes slideInFromBottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideOutToTop {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0); opacity: 0; }
+}
+
+@keyframes slideFadeIn {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFadeOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(50px); opacity: 0; }
+}
+
+@keyframes slideFadeInFromLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFadeOutToRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes slideFadeInFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFadeOutToLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes slideFadeInFromTop {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideFadeOutToBottom {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes slideFadeInFromBottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideFadeOutToTop {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100%); opacity: 0; }
+}

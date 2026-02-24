@@ -15,3 +15,479 @@
   align-items: center;
   justify-content: center;
 }
+
+.production-panel {
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.overlays-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.overlays-header h2 {
+  margin: 0;
+}
+
+.manage-link {
+  color: #646cff;
+}
+
+.overlays-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.overlay-item {
+  padding: 16px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.overlay-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.overlay-name {
+  font-weight: 500;
+  min-width: 150px;
+}
+
+.edit-button {
+  padding: 6px 12px;
+  background: #444;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+}
+
+.edit-button:hover {
+  background: #555;
+}
+
+.animation-select {
+  padding: 6px 12px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.toggle-button {
+  padding: 6px 12px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.toggle-button.active {
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.overlay-components {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #333;
+}
+
+.text-component-edit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text-label {
+  color: #888;
+}
+
+.text-value {
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.text-value:hover {
+  background: #333;
+}
+
+.text-input {
+  padding: 4px 8px;
+  background: #333;
+  border: 1px solid #646cff;
+  border-radius: 4px;
+  color: white;
+}
+
+.no-overlays {
+  margin-top: 16px;
+  color: #888;
+}
+
+.scenes-list {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.scenes-list h2 {
+  margin-top: 0;
+}
+
+.scene-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.scene-button {
+  display: flex;
+  gap: 4px;
+}
+
+.scene-button button {
+  flex: 1;
+}
+
+.scene-button.active button:first-child {
+  background-color: #4caf50;
+}
+
+.add-scene-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 12px;
+  background: #2a2a2a;
+  border-radius: 8px;
+}
+
+.add-scene-form input {
+  padding: 8px;
+}
+
+.scene-editor {
+  flex: 1;
+  padding: 16px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.animation-settings {
+  margin-bottom: 24px;
+  padding: 12px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.animation-settings h3 {
+  margin-top: 0;
+}
+
+.animation-settings label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.animation-settings select,
+.animation-settings input {
+  padding: 6px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.components-section h3 {
+  margin-top: 0;
+}
+
+.component-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 16px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.component-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.component-form select,
+.component-form input {
+  padding: 8px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.component-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.component-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: #252525;
+  border-radius: 4px;
+}
+
+.component-item span {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.output-page {
+  background: transparent;
+}
+
+.scene-manager {
+  padding: 20px;
+  max-width: 600px;
+}
+
+.scene-manager-header {
+  margin-bottom: 20px;
+}
+
+.scene-manager-header h1 {
+  margin-top: 12px;
+}
+
+.back-link {
+  color: #646cff;
+}
+
+.manage-scenes-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #646cff;
+}
+
+.create-scene-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 16px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.create-scene-form input {
+  padding: 10px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.scene-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.scene-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.scene-item.active {
+  border: 2px solid #4caf50;
+}
+
+.scene-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.edit-link {
+  padding: 6px 12px;
+  background: #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.scene-editor {
+  padding: 20px;
+}
+
+.scene-editor-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.scene-editor-header h1 {
+  flex: 1;
+  margin: 0;
+}
+
+.scene-deleted-message {
+  text-align: center;
+  padding: 40px;
+}
+
+.scene-deleted-message p {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.no-scenes {
+  margin-top: 16px;
+  color: #888;
+}
+
+.overlay-manager {
+  padding: 20px;
+  max-width: 600px;
+}
+
+.overlay-manager-header {
+  margin-bottom: 20px;
+}
+
+.overlay-manager-header h1 {
+  margin-top: 12px;
+}
+
+.create-overlay-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 16px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.create-overlay-form input {
+  padding: 10px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.overlay-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.overlay-editor {
+  padding: 20px;
+}
+
+.overlay-editor-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.overlay-name-input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 1.2em;
+  font-weight: 500;
+  background: #252525;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.add-element-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.add-element-buttons button {
+  padding: 10px 16px;
+  background: #333;
+}
+
+.add-element-buttons button:hover {
+  background: #444;
+}
+
+.component-edit-form {
+  margin-top: 24px;
+  padding: 16px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.component-edit-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.component-edit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.component-edit-form select,
+.component-edit-form input {
+  padding: 8px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+.overlay-deleted-message {
+  text-align: center;
+  padding: 40px;
+}
+
+.overlay-deleted-message p {
+  margin-bottom: 16px;
+  font-size: 18px;
+}

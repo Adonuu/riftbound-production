@@ -1,14 +1,46 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import OverlayRenderer from '../components/Overlay/OverlayRenderer';
 import './pages.css';
 
-export default function Output() {
-  useEffect(() => {
-    document.title = 'Output';
-  }, []);
+const API_BASE = 'http://localhost:3000';
 
-  return (
-    <div className="page-container centered fullscreen">
-      <h1>OBS Output</h1>
-    </div>
-  );
+export default function Output() {
+    const [overlays, setOverlays] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        document.title = 'Output';
+    }, []);
+
+    useEffect(() => {
+        const fetchOverlays = async () => {
+            try {
+                const res = await fetch(`${API_BASE}/api/overlays/output`);
+                const data = await res.json();
+                setOverlays(data);
+            } catch (err) {
+                console.error('Failed to fetch overlays:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchOverlays();
+        const interval = setInterval(fetchOverlays, 2000);
+        return () => clearInterval(interval);
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="page-container centered fullscreen output-page">
+                <p>Loading...</p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="page-container centered fullscreen output-page">
+            <OverlayRenderer overlays={overlays} />
+        </div>
+    );
 }

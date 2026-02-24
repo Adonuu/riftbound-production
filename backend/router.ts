@@ -1,9 +1,11 @@
 import { cardRoutes } from "./routes/cardRoutes";
+import { overlayRoutes } from "./routes/overlayRoutes";
 
 type Handler = (req: Request) => Response | Promise<Response>;
 
 const routes: Record<string, Partial<Record<string, Handler>>> = {
   ...cardRoutes,
+  ...overlayRoutes,
 };
 
 export async function router(req: Request): Promise<Response> {
