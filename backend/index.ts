@@ -10,14 +10,14 @@ const server = Bun.serve({
     const url = new URL(req.url);
 
     if (url.pathname.startsWith("/api/uploads/")) {
-      const filename = url.pathname.split("/api/uploads/")[1];
+      const filename = url.pathname.split("/api/uploads/")[1] ?? "";
       const filepath = join(UPLOAD_DIR, filename);
 
       if (!existsSync(filepath)) {
         return Response.json({ error: "File not found" }, { status: 404 });
       }
 
-      const ext = filename.split(".").pop()?.toLowerCase() || "";
+      const ext = filename.split(".").pop()?.toLowerCase() ?? "";
       const mimeTypes: Record<string, string> = {
         jpg: "image/jpeg",
         jpeg: "image/jpeg",
@@ -28,9 +28,9 @@ const server = Bun.serve({
         webm: "video/webm"
       };
 
-      const mimeType = mimeTypes[ext] || "application/octet-stream";
+      const mimeType = mimeTypes[ext] ?? "application/octet-stream";
 
-      return new Response(createReadStream(filepath) as unknown as BodyInit, {
+      return new Response(createReadStream(filepath) as never, {
         headers: {
           "Content-Type": mimeType
         }

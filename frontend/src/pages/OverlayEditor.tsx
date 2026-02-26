@@ -23,7 +23,7 @@ const DIRECTIONS = [
 
 export default function OverlayEditor() {
     const { id } = useParams<{ id: string }>();
-    const { overlays, updateOverlay, addComponent, updateComponent, deleteComponent, deleteOverlay, refreshOverlays } = useOverlays();
+    const { overlays, updateOverlay, addComponent, updateComponent, deleteComponent, deleteOverlay } = useOverlays();
     const [overlay, setOverlay] = useState<Overlay | null>(null);
     const [components, setComponents] = useState<Component[]>([]);
     const [editingComponent, setEditingComponent] = useState<Component | null>(null);
@@ -132,29 +132,6 @@ export default function OverlayEditor() {
             width: 100,
             height: 100,
             zIndex: components.length,
-        });
-        
-        const compRes = await fetch(`${API_BASE}/api/overlays/${overlay.id}/components`);
-        const compData = await compRes.json();
-        setComponents(compData);
-    };
-
-    const handleAddComponent = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!overlay?.id) return;
-        
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
-        
-        await addComponent(overlay.id, {
-            name: formData.get('name') as string || `Component ${components.length + 1}`,
-            type: formData.get('type') as 'image' | 'text' | 'video',
-            content: formData.get('content') as string,
-            x: parseFloat(formData.get('x') as string) || 0,
-            y: parseFloat(formData.get('y') as string) || 0,
-            width: parseFloat(formData.get('width') as string) || 100,
-            height: parseFloat(formData.get('height') as string) || 100,
-            zIndex: parseInt(formData.get('zIndex') as string) || 0,
         });
         
         const compRes = await fetch(`${API_BASE}/api/overlays/${overlay.id}/components`);

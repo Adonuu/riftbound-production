@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
 import OverlayRenderer from '../components/Overlay/OverlayRenderer';
+import { Overlay } from '../context/OverlayContext';
 import './pages.css';
 
 const API_BASE = 'http://localhost:3000';
 
-export default function Output() {
-    const [overlays, setOverlays] = useState([]);
+export default function Preview() {
+    const [overlays, setOverlays] = useState<Overlay[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        document.title = 'Output';
+        document.title = 'Preview';
     }, []);
 
     useEffect(() => {
         const fetchOverlays = async () => {
             try {
-                const res = await fetch(`${API_BASE}/api/overlays/output`);
-                const data = await res.json();
+                const res = await fetch(`${API_BASE}/api/overlays/preview`);
+                const data: Overlay[] = await res.json();
                 setOverlays(data);
             } catch (err) {
                 console.error('Failed to fetch overlays:', err);
@@ -32,7 +33,7 @@ export default function Output() {
 
     if (loading) {
         return (
-            <div className="page-container centered fullscreen output-page">
+            <div className="page-container centered">
                 <p>Loading...</p>
             </div>
         );
