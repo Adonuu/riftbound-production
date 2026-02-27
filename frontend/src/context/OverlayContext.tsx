@@ -131,14 +131,20 @@ export function OverlayProvider({ children }: { children: React.ReactNode }) {
 
     const addComponent = async (overlayId: number, component: Omit<Component, 'id' | 'overlayId'>) => {
         try {
-            await fetch(`${API_BASE}/api/overlays/${overlayId}/components`, {
+            const res = await fetch(`${API_BASE}/api/overlays/${overlayId}/components`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(component),
             });
+            if (!res.ok) {
+                const error = await res.json();
+                console.error('Failed to add component:', error);
+                throw new Error(error.error || 'Failed to add component');
+            }
             await refreshOverlays();
         } catch (err) {
             console.error('Failed to add component:', err);
+            throw err;
         }
     };
 
